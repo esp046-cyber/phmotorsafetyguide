@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PH Moto Safety Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            margin: 1%;
+            padding-bottom: 80px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e94560 0%, #c62828 100%);
+            padding: 12px 1%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(233, 69, 96, 0.3);
+        }
+
+        .header h1 {
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 1%;
+            margin: 1% 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-tab {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, #e94560 0%, #c62828 100%);
+            box-shadow: 0 2px 8px rgba(233, 69, 96, 0.4);
+        }
+
+        .content {
+            margin: 1%;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 15px 1%;
+            margin-bottom: 1%;
+            border-left: 4px solid #e94560;
+            backdrop-filter: blur(10px);
+        }
+
+        .card h2 {
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: #e94560;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card h3 {
+            font-size: 14px;
+            margin: 12px 0 8px 0;
+            color: #ffd369;
+        }
+
+        .card p, .card li {
+            font-size: 13px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 8px;
+        }
+
+        .card ul, .card ol {
+            margin-left: 18px;
+            margin-top: 8px;
+        }
+
+        .card li {
+            margin-bottom: 6px;
+        }
+
+        .icon {
+            font-size: 18px;
+        }
+
+        .warning-box {
+            background: rgba(255, 193, 7, 0.15);
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+
+        .warning-box p {
+            color: #ffc107;
+            font-weight: 500;
+        }
+
+        .info-box {
+            background: rgba(33, 150, 243, 0.15);
+            border-left: 4px solid #2196f3;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+
+        .info-box p {
+            color: #64b5f6;
+        }
+
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .emergency-card {
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.2) 0%, rgba(198, 40, 40, 0.2) 100%);
+            border: 2px solid #e94560;
+        }
+
+        .emergency-number {
+            font-size: 22px;
+            font-weight: bold;
+            color: #e94560;
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin: 8px 0;
+        }
+
+        .footer-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #16213e;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 1%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-btn {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 11px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 10px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-btn.active {
+            color: #e94560;
+        }
+
+        .footer-btn .icon {
+            font-size: 22px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1%;
+        }
+
+        .mini-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mini-card .icon {
+            font-size: 28px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .mini-card h4 {
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .mini-card p {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏍️ PH Motorcycle Safety Guide</h1>
+    </div>
+
+    <div class="nav-tabs" id="navTabs">
+        <button class="nav-tab active" data-section="basics">Basics</button>
+        <button class="nav-tab" data-section="gear">Safety Gear</button>
+        <button class="nav-tab" data-section="riding">Riding Tips</button>
+        <button class="nav-tab" data-section="weather">Weather</button>
+        <button class="nav-tab" data-section="laws">PH Laws</button>
+        <button class="nav-tab" data-section="emergency">Emergency</button>
+    </div>
+
+    <div class="content">
+        <!-- BASICS SECTION -->
+        <div id="basics" class="section active">
+            <div class="card">
+                <h2><span class="icon">📋</span>Pre-Ride Checklist</h2>
+                <ul class="checklist">
+                    <li>Check tire pressure and tread depth</li>
+                    <li>Test brakes (front and rear)</li>
+                    <li>Inspect lights, signals, and horn</li>
+                    <li>Check fluid levels (oil, brake, coolant)</li>
+                    <li>Inspect chain tension and lubrication</li>
+                    <li>Ensure mirrors are properly adjusted</li>
+                    <li>Check for loose bolts or parts</li>
+                    <li>Verify registration and insurance documents</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🎯</span>Defensive Riding Mindset</h2>
+                <p>Sa Pilipinas, defensive riding saves lives. Always assume other drivers cannot see you.</p>
+                <ul>
+                    <li><strong>Visibility:</strong> Ride with headlights on, wear bright/reflective gear</li>
+                    <li><strong>Space:</strong> Maintain 2-second following distance minimum</li>
+                    <li><strong>Position:</strong> Stay in the left tire track for better visibility</li>
+                    <li><strong>Anticipate:</strong> Watch for opening car doors, pedestrians, and road hazards</li>
+                    <li><strong>Escape Routes:</strong> Always identify your "out" in traffic</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">⚠️</span>Common PH Road Hazards</h2>
+                <div class="grid-2">
+                    <div class="mini-card">
+                        <span class="icon">🕳️</span>
+                        <h4>Potholes</h4>
+                        <p>Scan ahead, slow down</p>
+                    </div>
+                    <div class="mini-card">
+                        <span class="icon">💧</span>
+                        <h4>Oil Spills</h4>
+                        <p>Avoid sudden braking</p>
+                    </div>
+                    <div class="mini-card">
+                        <span class="icon">🚗</span>
+                        <h4>Swerving Cars</h4>
+                        <p>Keep safe distance</p>
+                    </div>
+                    <div class="mini-card">
+                        <span class="icon">🐕</span>
+                        <h4>Animals</h4>
+                        <p>Brake, don't swerve</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🔧</span>Basic Motorcycle Maintenance</h2>
+                <h3>Daily Checks (T-CLOCS)</h3>
+                <ul>
+                    <li><strong>T - Tires:</strong> Check pressure, tread, cracks (32-36 PSI typical)</li>
+                    <li><strong>C - Controls:</strong> Throttle, clutch, brakes responsive</li>
+                    <li><strong>L - Lights:</strong> Headlight, taillight, signals, brake light</li>
+                    <li><strong>O - Oil:</strong> Check level, look for leaks</li>
+                    <li><strong>C - Chassis:</strong> Check for loose parts, leaks</li>
+                    <li><strong>S - Stands:</strong> Side stand, center stand secure</li>
+                </ul>
+
+                <h3>Weekly Maintenance</h3>
+                <ul>
+                    <li>Clean and lubricate chain (every 500km)</li>
+                    <li>Check chain tension (2-3cm play)</li>
+                    <li>Wash bike (prevents rust, improves visibility)</li>
+                    <li>Check brake pad thickness</li>
+                </ul>
+
+                <h3>Monthly Maintenance</h3>
+                <ul>
+                    <li>Check battery terminals (clean if corroded)</li>
+                    <li>Inspect brake fluid level</li>
+                    <li>Check coolant level</li>
+                    <li>Tighten all bolts and fasteners</li>
+                    <li>Inspect cables for fraying</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>💡 Change oil every 1,000-2,000km or 3 months for Manila traffic conditions</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🎓</span>Riding Skills to Practice</h2>
+                <p>Practice these in safe, empty areas regularly:</p>
+                <ul>
+                    <li><strong>Emergency Braking:</strong> Practice stopping quickly without locking wheels</li>
+                    <li><strong>Slow Speed Maneuvers:</strong> U-turns, figure-8s, tight circles</li>
+                    <li><strong>Swerving:</strong> Quick lane changes to avoid obstacles</li>
+                    <li><strong>Counter-steering:</strong> Push right handlebar to go right (at speed)</li>
+                    <li><strong>Head Checks:</strong> Looking over shoulder without swerving</li>
+                    <li><strong>One-handed riding:</strong> For signaling (practice at slow speeds)</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p>⚠️ Never practice on public roads with traffic. Find empty parking lots or closed areas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SAFETY GEAR SECTION -->
+        <div id="gear" class="section">
+            <div class="card">
+                <h2><span class="icon">🪖</span>Essential Safety Gear</h2>
+                
+                <h3>1. Helmet (Mandatory in PH)</h3>
+                <p><strong>Requirements:</strong> DOT, ECE, or Snell certified full-face helmet</p>
+                <ul>
+                    <li>Replace every 5 years or after any impact</li>
+                    <li>Must fit snugly without pressure points</li>
+                    <li>Chin strap should allow only 2 fingers underneath</li>
+                </ul>
+                <div class="warning-box">
+                    <p>⚠️ "Tropang helmet" (P200-500 uncertified helmets) offer NO protection. Invest in your life!</p>
+                </div>
+
+                <h3>2. Riding Jacket</h3>
+                <ul>
+                    <li>Abrasion-resistant material (leather or textile)</li>
+                    <li>CE-certified armor at shoulders, elbows, back</li>
+                    <li>Bright colors or reflective panels for visibility</li>
+                    <li>Mesh jackets for PH heat with armor</li>
+                </ul>
+
+                <h3>3. Gloves</h3>
+                <p>Protect hands in 90% of crashes. Look for:</p>
+                <ul>
+                    <li>Palm sliders and knuckle protection</li>
+                    <li>Reinforced stitching</li>
+                    <li>Secure wrist closure</li>
+                </ul>
+
+                <h3>4. Riding Pants/Jeans</h3>
+                <ul>
+                    <li>Kevlar-reinforced riding jeans minimum</li>
+                    <li>Knee and hip armor pockets</li>
+                    <li>Never wear shorts or regular jeans</li>
+                </ul>
+
+                <h3>5. Boots</h3>
+                <ul>
+                    <li>Over-the-ankle height minimum</li>
+                    <li>Oil-resistant, non-slip soles</li>
+                    <li>Toe and heel protection</li>
+                    <li>Avoid tsinelas or sneakers</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">💰</span>Budget Guide (₱)</h2>
+                <p><strong>Minimum Safe Setup:</strong> ₱8,000-12,000</p>
+                <ul>
+                    <li>Helmet: ₱3,000-5,000 (certified)</li>
+                    <li>Jacket: ₱2,500-4,000 (with armor)</li>
+                    <li>Gloves: ₱800-1,500</li>
+                    <li>Riding Jeans: ₱1,500-3,000</li>
+                    <li>Boots: ₱1,500-2,500</li>
+                </ul>
+                <div class="info-box">
+                    <p>💡 Buy gear gradually, prioritize helmet and gloves first!</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🛡️</span>Gear Maintenance Tips</h2>
+                <h3>Helmet Care</h3>
+                <ul>
+                    <li>Clean visor with mild soap, microfiber cloth (no harsh chemicals)</li>
+                    <li>Wash inner padding every 2-3 months</li>
+                    <li>Store in cool, dry place (not in direct sunlight)</li>
+                    <li>Never hang on mirror (damages inner foam)</li>
+                    <li>Replace after 5 years or any impact</li>
+                </ul>
+
+                <h3>Jacket & Pants Care</h3>
+                <ul>
+                    <li>Remove armor before washing</li>
+                    <li>Hand wash or gentle cycle in cold water</li>
+                    <li>Air dry only (no dryer)</li>
+                    <li>Re-waterproof annually with spray treatment</li>
+                    <li>Check armor fitment regularly</li>
+                </ul>
+
+                <h3>Gloves Care</h3>
+                <ul>
+                    <li>Hand wash with mild soap</li>
+                    <li>Stuff with newspaper while drying to maintain shape</li>
+                    <li>Condition leather monthly with leather conditioner</li>
+                    <li>Replace when padding compresses or stitching fails</li>
+                </ul>
+
+                <h3>Boots Care</h3>
+                <ul>
+                    <li>Clean after every ride (especially in rain)</li>
+                    <li>Use leather conditioner on leather boots</li>
+                    <li>Check sole grip regularly, replace if worn</li>
+                    <li>Waterproof with appropriate spray treatment</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🌡️</span>Gear for PH Climate</h2>
+                <h3>Hot Weather Gear (April-May)</h3>
+                <ul>
+                    <li>Mesh jacket with CE armor (better airflow)</li>
+                    <li>Moisture-wicking base layer</li>
+                    <li>Ventilated summer gloves</li>
+                    <li>Light-colored gear (reflects heat)</li>
+                    <li>Anti-fog visor coating essential</li>
+                </ul>
+
+                <h3>Rainy Season Gear (June-November)</h3>
+                <ul>
+                    <li>Waterproof over-jacket and pants</li>
+                    <li>Waterproof gloves or glove covers</li>
+                    <li>Pinlock anti-fog visor insert</li>
+                    <li>Waterproof boot covers</li>
+                    <li>Dry bag for electronics/documents</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>💡 Invest in dual-sport or adventure gear - versatile for PH weather conditions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIDING TIPS SECTION -->
+        <div id="riding" class="section">
+            <div class="card">
+                <h2><span class="icon">🛣️</span>City Riding (Manila/Metro Areas)</h2>
+                <ul>
+                    <li><strong>Lane Splitting:</strong> Legal but use extreme caution. Stay under 40kph when filtering</li>
+                    <li><strong>Watch for buses/jeeps:</strong> They stop suddenly without warning</li>
+                    <li><strong>Avoid blind spots:</strong> Never ride beside large vehicles for long</li>
+                    <li><strong>Traffic lights:</strong> Be first or last in lane, never between cars</li>
+                    <li><strong>EDSA/C5:</strong> Use leftmost lane when safe, middle lanes have most hazards</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🏔️</span>Provincial/Highway Riding</h2>
+                <ul>
+                    <li>Watch for crossing animals, especially at dawn/dusk</li>
+                    <li>Slow down for small towns (speed bumps often unmarked)</li>
+                    <li>Be visible: many provincial roads lack lighting</li>
+                    <li>Plan fuel stops (some areas have 50km+ between stations)</li>
+                    <li>Check weather and road conditions before mountain rides</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🌙</span>Night Riding Safety</h2>
+                <div class="warning-box">
+                    <p>⚠️ Accident rates triple at night in PH</p>
+                </div>
+                <ul>
+                    <li>Reduce speed by 20-30% compared to daytime</li>
+                    <li>Use high beam when no oncoming traffic</li>
+                    <li>Wear reflective vest or gear</li>
+                    <li>Avoid overtaking unless absolutely necessary</li>
+                    <li>Watch for unlit vehicles/obstacles</li>
+                    <li>Never ride if drowsy - pull over and rest</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🚦</span>Intersection Safety</h2>
+                <p>70% of motorcycle accidents in PH happen at intersections</p>
+                <ul>
+                    <li><strong>Cover your brakes:</strong> Fingers on levers when approaching</li>
+                    <li><strong>Make eye contact:</strong> Ensure drivers see you</li>
+                    <li><strong>Watch for left-turning vehicles:</strong> They often don't see motorcycles</li>
+                    <li><strong>Position yourself:</strong> Be visible in driver's mirrors</li>
+                    <li><strong>Never assume right-of-way:</strong> Better late than injured</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🛑</span>Braking Techniques</h2>
+                <ul>
+                    <li><strong>70/30 Rule:</strong> Front brake 70%, rear 30% for maximum stopping power</li>
+                    <li><strong>Progressive braking:</strong> Squeeze gradually, don't grab</li>
+                    <li><strong>Both brakes:</strong> Always use both together</li>
+                    <li><strong>Look where you want to go:</strong> Not at the obstacle</li>
+                    <li><strong>Practice emergency stops:</strong> In safe area weekly</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🚛</span>Dealing with Large Vehicles</h2>
+                <p>Trucks, buses, and trailers are major hazards:</p>
+                <ul>
+                    <li><strong>Blind spots:</strong> If you can't see their mirrors, they can't see you</li>
+                    <li><strong>Never ride alongside:</strong> They can't see you and may merge</li>
+                    <li><strong>Pass quickly:</strong> Don't linger beside large vehicles</li>
+                    <li><strong>Wide turns:</strong> Trucks swing wide, give them space</li>
+                    <li><strong>Stopping distance:</strong> Stay far back, they take longer to stop</li>
+                    <li><strong>Debris:</strong> Loose cargo, tire fragments - maintain distance</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p>⚠️ Never pass on the right side of trucks making right turns!</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">⛽</span>Fuel Efficiency Tips</h2>
+                <p>Save money and extend range:</p>
+                <ul>
+                    <li>Maintain proper tire pressure (improves MPG by 10%)</li>
+                    <li>Smooth throttle control (no aggressive acceleration)</li>
+                    <li>Anticipate stops (coast to red lights instead of braking late)</li>
+                    <li>Remove unnecessary weight from bike</li>
+                    <li>Keep chain properly lubricated</li>
+                    <li>Regular engine tune-ups</li>
+                    <li>Ride at consistent speeds (60-80kph is most efficient)</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>💡 Typical motorcycle: 30-50 km/L city, 40-60 km/L highway</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">👥</span>Group Riding Safety</h2>
+                <h3>Formation Types</h3>
+                <ul>
+                    <li><strong>Staggered (most common):</strong> Left-right-left pattern, 2 second gap</li>
+                    <li><strong>Single file:</strong> For twisty roads, narrow lanes, bad weather</li>
+                    <li><strong>Side-by-side:</strong> NEVER do this in PH roads</li>
+                </ul>
+
+                <h3>Group Riding Rules</h3>
+                <ul>
+                    <li>Pre-ride briefing: Route, stops, hand signals, pace</li>
+                    <li>Ride your own ride: Don't exceed your skill level</li>
+                    <li>Lead rider sets pace (should be slowest/least experienced)</li>
+                    <li>Sweep rider at back (most experienced, helps stragglers)</li>
+                    <li>Pass hazards one at a time, not as group</li>
+                    <li>Everyone responsible for rider behind them</li>
+                    <li>Use hand signals (covered below)</li>
+                </ul>
+
+                <h3>Common Hand Signals</h3>
+                <ul>
+                    <li><strong>Left turn:</strong> Left arm extended straight</li>
+                    <li><strong>Right turn:</strong> Left arm up at 90° or right arm extended</li>
+                    <li><strong>Stop:</strong> Left arm down at 45°, palm back</li>
+                    <li><strong>Slow down:</strong> Left arm extended down, palm down, pump up/down</li>
+                    <li><strong>Hazard (left):</strong> Left foot point out</li>
+                    <li><strong>Hazard (right):</strong> Right foot point out</li>
+                    <li><strong>Single file:</strong> Left arm up, index finger extended</li>
+                    <li><strong>Follow me:</strong> Left arm bent up, swing forward</li>
+                    <li><strong>You lead:</strong> Left arm bent up, swing forward then point ahead</li>
+                    <li><strong>Fuel stop:</strong> Point to tank</li>
+                    <li><strong>Comfort stop:</strong> Arm bent, shake fist</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p>⚠️ Never feel pressured to keep up with faster riders. Ride at YOUR safe pace!</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🏍️</span>Motorcycle Types & Best Uses</h2>
+                <div class="grid-2">
+                    <div class="mini-card">
+                        <span class="icon">🏙️</span>
+                        <h4>Underbone/Scooter</h4>
+                        <p>City traffic, beginners, fuel efficient</p>
+                    </div>
+                    <div class="mini-card">
+                        <span class="icon">🏔️</span>
+                        <h4>Adventure/Dual-Sport</h4>
+                        <p>Mixed terrain, touring, versatile</p>
+                    </div>
+                    <div class="mini-card">
+                        <span class="icon">⚡</span>
+                        <h4>Sport Bike</h4>
+                        <p>Speed, agility, experienced riders</p>
+                    </div>
+                    <div class="mini-card">
+                        <span class="icon">🛣️</span>
+                        <h4>Cruiser/Touring</h4>
+                        <p>Long rides, comfort, highways</p>
+                    </div>
+                </div>
+
+                <h3>Choosing Your First Bike</h3>
+                <ul>
+                    <li><strong>Start small:</strong> 150cc or less for beginners</li>
+                    <li><strong>Seat height:</strong> Both feet flat on ground when stopped</li>
+                    <li><strong>Weight:</strong> Can you lift it if it falls?</li>
+                    <li><strong>Purpose:</strong> 80% city? Get underbone/scooter. Long rides? Adventure bike</li>
+                    <li><strong>Budget:</strong> Include gear, maintenance, insurance in calculations</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>💡 Most accidents happen in first 6 months. Start with beginner-friendly bikes!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEATHER SECTION -->
+        <div id="weather" class="section">
+            <div class="card">
+                <h2><span class="icon">🌧️</span>Riding in Rain</h2>
+                <div class="warning-box">
+                    <p>⚠️ First 30 minutes of rain is most dangerous (oil rises to surface)</p>
+                </div>
+                <ul>
+                    <li><strong>Reduce speed by 50%:</strong> Stopping distance doubles on wet roads</li>
+                    <li><strong>Smooth inputs:</strong> Gentle throttle, braking, and steering</li>
+                    <li><strong>Avoid painted lines:</strong> Extremely slippery when wet</li>
+                    <li><strong>Increase following distance:</strong> 4-5 seconds minimum</li>
+                    <li><strong>Use both brakes gently:</strong> More rear brake than normal</li>
+                    <li><strong>Stay relaxed:</strong> Tense muscles lead to jerky movements</li>
+                </ul>
+                
+                <h3>Rain Gear Essentials</h3>
+                <ul>
+                    <li>Waterproof jacket and pants</li>
+                    <li>Waterproof gloves or glove covers</li>
+                    <li>Anti-fog visor treatment or pinlock</li>
+                    <li>Waterproof boots or boot covers</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">☀️</span>Hot Weather Riding</h2>
+                <p>PH summer temperatures reach 35-40°C. Prevent heat exhaustion:</p>
+                <ul>
+                    <li>Wear mesh/ventilated jacket with armor (never ride without protection)</li>
+                    <li>Stay hydrated: drink water every 30-45 minutes</li>
+                    <li>Wear moisture-wicking base layers</li>
+                    <li>Avoid riding during peak heat (12-3 PM) if possible</li>
+                    <li>Take breaks in shade every hour</li>
+                    <li>Watch for signs: dizziness, nausea, confusion = pull over immediately</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">💨</span>Strong Wind/Bagyo Season</h2>
+                <div class="warning-box">
+                    <p>⚠️ Avoid riding in Signal 2 or higher. Not worth the risk!</p>
+                </div>
+                <ul>
+                    <li>Strong crosswinds can push you into another lane</li>
+                    <li>Grip tank with knees for stability</li>
+                    <li>Reduce speed significantly</li>
+                    <li>Watch for flying debris</li>
+                    <li>Be extra cautious near large vehicles (wind buffeting)</li>
+                    <li>If wind is too strong, pull over and wait it out</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🌊</span>Flooded Roads (Baha)</h2>
+                <p><strong>Rule #1: If you can't see the road surface, don't cross!</strong></p>
+                <ul>
+                    <li>Maximum safe depth: ankle-deep (15-20cm)</li>
+                    <li>Watch other vehicles first to gauge depth</li>
+                    <li>Ride slowly and steadily (don't stop mid-crossing)</li>
+                    <li>Keep revs up to prevent water entering exhaust</li>
+                    <li>Dry brakes after crossing: pump them gently several times</li>
+                    <li>Check air filter and oil after riding through flood water</li>
+                </ul>
+                <div class="info-box">
+                    <p>💡 If engine dies in water: DO NOT restart! Push to dry area and have it checked.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🌫️</span>Fog & Low Visibility Riding</h2>
+                <p>Common in Tagaytay, Baguio, and mountain areas:</p>
+                <ul>
+                    <li>Use low beam (high beam reflects back, reduces visibility)</li>
+                    <li>Reduce speed by 50% or more</li>
+                    <li>Use road edge as guide, not center line</li>
+                    <li>Increase following distance to 5+ seconds</li>
+                    <li>Turn on hazard lights if moving very slowly</li>
+                    <li>If visibility drops to zero, pull over completely off road</li>
+                    <li>Wear reflective gear/vest</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p>⚠️ Never stop in the road. If you must stop, get completely off the roadway!</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🌡️</span>Extreme Heat Protection</h2>
+                <h3>Signs of Heat Exhaustion</h3>
+                <ul>
+                    <li>Heavy sweating or no sweating</li>
+                    <li>Dizziness, nausea, headache</li>
+                    <li>Muscle cramps</li>
+                    <li>Rapid heartbeat</li>
+                    <li>Confusion, irritability</li>
+                </ul>
+
+                <h3>Prevention</h3>
+                <ul>
+                    <li>Drink 250ml water every 30 minutes</li>
+                    <li>Avoid caffeine and alcohol before riding</li>
+                    <li>Wear light-colored, ventilated gear</li>
+                    <li>Take 10-minute breaks every hour</li>
+                    <li>Wet bandana under helmet</li>
+                    <li>Plan rides for early morning or late afternoon</li>
+                </ul>
+
+                <h3>If You Feel Heat Exhaustion</h3>
+                <ol>
+                    <li>Stop riding immediately</li>
+                    <li>Move to shade</li>
+                    <li>Remove helmet and jacket</li>
+                    <li>Drink water slowly</li>
+                    <li>Pour water on head, neck, wrists</li>
+                    <li>If symptoms persist, seek medical help</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- PH LAWS SECTION -->
+        <div id="laws" class="section">
+            <div class="card">
+                <h2><span class="icon">📜</span>RA 10054: Motorcycle Helmet Act</h2>
+                <ul>
+                    <li><strong>Mandatory:</strong> All riders and passengers must wear ICC-approved helmets</li>
+                    <li><strong>Fine:</strong> ₱1,500 first offense, ₱3,000 second, ₱5,000 + confiscation third</li>
+                    <li><strong>Standards:</strong> Must have ICC sticker (DOT, ECE, or Snell)</li>
+                    <li><strong>Proper fit:</strong> Securely fastened chin strap</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🚨</span>RA 11235: Motorcycle Crime Prevention Act</h2>
+                <p><strong>"Doble Plaka Law" - Effective since March 2019</strong></p>
+                <ul>
+                    <li>Larger, readable number plates (front and rear)</li>
+                    <li>Number plate details must match OR/CR</li>
+                    <li>No covering, obstruction, or modification of plates</li>
+                    <li>Reflective and visible at night</li>
+                    <li><strong>Fine:</strong> ₱50,000 and/or imprisonment for violations</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">⚖️</span>Republic Act 4136: Land Transportation Code</h2>
+                <h3>Key Violations & Fines</h3>
+                <ul>
+                    <li><strong>No license:</strong> ₱3,000 + impounding</li>
+                    <li><strong>Expired registration:</strong> ₱10,000</li>
+                    <li><strong>No OR/CR:</strong> ₱3,000 + impounding</li>
+                    <li><strong>Reckless driving:</strong> ₱2,000 first, ₱5,000 second, revocation third</li>
+                    <li><strong>Illegal modification:</strong> ₱5,000</li>
+                    <li><strong>Overloading:</strong> ₱1,000 per excess passenger</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🚫</span>Common Violations to Avoid</h2>
+                <ul>
+                    <li>Riding without side mirrors (₱150-300)</li>
+                    <li>Excessive noise (modified exhaust): ₱1,000</li>
+                    <li>Riding on sidewalk: ₱150</li>
+                    <li>Illegal parking: ₱200-500</li>
+                    <li>Disregarding traffic signs: ₱150-1,000</li>
+                    <li>Not wearing helmet: ₱1,500+</li>
+                    <li>No license plate light: ₱150</li>
+                    <li>Counterflow: ₱1,000</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">📄</span>Required Documents</h2>
+                <p>Always carry these while riding:</p>
+                <ul class="checklist">
+                    <li>Valid Driver's License (Restriction Code 1 for motorcycle)</li>
+                    <li>Official Receipt (OR) - proof of registration</li>
+                    <li>Certificate of Registration (CR)</li>
+                    <li>Certificate of Insurance (Compulsory Third Party Liability)</li>
+                </ul>
+                <div class="info-box">
+                    <p>💡 Keep photocopies in waterproof bag, originals at home for safety</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">👮</span>Dealing with Traffic Enforcers</h2>
+                <ul>
+                    <li>Be polite and respectful at all times</li>
+                    <li>Know your rights: ask for violation specifics</li>
+                    <li>Request citation ticket (never pay cash on the spot)</li>
+                    <li>Take note of enforcer's name and ID number</li>
+                    <li>If wrongfully flagged, file complaint with agency</li>
+                    <li>Never argue aggressively - it won't help</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🎫</span>Paying Traffic Violations</h2>
+                <h3>How to Pay Properly</h3>
+                <ol>
+                    <li>Receive Traffic Violation Receipt (TVR) from enforcer</li>
+                    <li>Pay within 7 days at authorized payment centers</li>
+                    <li>Options: LTO offices, Bayad Centers, online via LTO portal</li>
+                    <li>Bring valid ID and TVR</li>
+                    <li>Get official receipt as proof</li>
+                </ol>
+
+                <div class="warning-box">
+                    <p>⚠️ Paying "under the table" is illegal and encourages corruption. Always ask for official receipt!</p>
+                </div>
+
+                <h3>What to Do if Apprehended</h3>
+                <ul>
+                    <li>Stay calm and cooperative</li>
+                    <li>Ask officer to explain the violation</li>
+                    <li>Present your documents: license, OR/CR</li>
+                    <li>If you agree with violation, accept ticket</li>
+                    <li>If you disagree, still accept ticket but note your objection</li>
+                    <li>You can contest the ticket later at adjudication</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🆔</span>Getting Your Motorcycle License</h2>
+                <h3>Requirements (Restriction Code 1)</h3>
+                <ul>
+                    <li>18 years old or above</li>
+                    <li>Valid Student Permit (held for at least 1 month)</li>
+                    <li>Pass Practical Driving Exam (PDE)</li>
+                    <li>Medical certificate</li>
+                    <li>Drug test result</li>
+                </ul>
+
+                <h3>Practical Driving Test Includes</h3>
+                <ul>
+                    <li>Pre-departure inspection</li>
+                    <li>Starting and stopping</li>
+                    <li>Figure-8 pattern</li>
+                    <li>Slalom course</li>
+                    <li>Emergency braking</li>
+                    <li>Road rules knowledge</li>
+                </ul>
+
+                <h3>License Validity</h3>
+                <ul>
+                    <li>New license: 5 years</li>
+                    <li>Renewal: 5 years (if no violations)</li>
+                    <li>Can renew up to 1 year before expiry</li>
+                    <li>10-year license available for clean records</li>
+                </ul>
+
+                <div class="info-box">
+                    <p>💡 Take a rider safety course even if not required. It can save your life!</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🔒</span>Anti-Carnapping Tips</h2>
+                <p>Motorcycle theft is common in PH. Protect your investment:</p>
+                <ul>
+                    <li><strong>Always use multiple locks:</strong> Disc lock + chain + cover</li>
+                    <li><strong>Park in well-lit, visible areas</strong></li>
+                    <li><strong>Use GPS tracker:</strong> Hidden location, not obvious spots</li>
+                    <li><strong>Never leave key in ignition:</strong> Even for "just a minute"</li>
+                    <li><strong>Lock steering:</strong> Turn handlebar all the way, lock</li>
+                    <li><strong>Remove valuables:</strong> Don't leave phone, wallet in compartments</li>
+                    <li><strong>Install alarm system:</strong> Loud deterrent for thieves</li>
+                    <li><strong>Mark bike with unique identifiers:</strong> UV pen on hidden parts</li>
+                    <li><strong>Take photos:</strong> Document serial numbers, unique marks</li>
+                    <li><strong>Avoid parking in same spot daily:</strong> Thieves watch patterns</li>
+                </ul>
+
+                <h3>If Your Bike is Stolen</h3>
+                <ol>
+                    <li>Report to police immediately (get police report)</li>
+                    <li>Report to PNP-HPG Anti-Carnapping Unit</li>
+                    <li>Notify LTO within 24 hours</li>
+                    <li>File insurance claim (if covered)</li>
+                    <li>Post on social media with photos, OR/CR details</li>
+                    <li>Check online marketplaces daily</li>
+                    <li>Alert local motorcycle groups</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- EMERGENCY SECTION -->
+        <div id="emergency" class="section">
+            <div class="card emergency-card">
+                <h2><span class="icon">🚨</span>Emergency Hotlines</h2>
+                <div class="emergency-number">911</div>
+                <p style="text-align: center; margin-bottom: 15px;">National Emergency Hotline</p>
+                
+                <h3>Other Important Numbers</h3>
+                <ul>
+                    <li><strong>PNP Patrol:</strong> 117-7377</li>
+                    <li><strong>MMDA:</strong> 136</li>
+                    <li><strong>Red Cross:</strong> 143 / (02) 8527-0000</li>
+                    <li><strong>Highway Patrol Group:</strong> 0917-842-8763</li>
+                    <li><strong>Bombers:</strong> (02) 8426-0219</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🩹</span>Accident Response Protocol</h2>
+                <h3>If You're Involved in an Accident:</h3>
+                <ol>
+                    <li><strong>Safety First:</strong> Move to safe area if possible, turn on hazards</li>
+                    <li><strong>Check for Injuries:</strong> Your safety and others'</li>
+                    <li><strong>Call for Help:</strong> 911 or emergency contacts</li>
+                    <li><strong>Don't Move Seriously Injured:</strong> Wait for medical professionals</li>
+                    <li><strong>Document Everything:</strong> Photos of scene, damages, injuries, plates</li>
+                    <li><strong>Get Witness Info:</strong> Names, contact numbers, statements</li>
+                    <li><strong>Exchange Information:</strong> Driver details, insurance, OR/CR</li>
+                    <li><strong>File Police Report:</strong> Even for minor accidents</li>
+                    <li><strong>Notify Insurance:</strong> Within 24 hours</li>
+                    <li><strong>Don't Admit Fault:</strong> Let authorities determine liability</li>
+                </ol>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🔧</span>Roadside Breakdown</h2>
+                <ul>
+                    <li>Pull over to safest spot possible</li>
+                    <li>Turn on hazard lights immediately</li>
+                    <li>Set up early warning device (EWD) 5 meters behind bike</li>
+                    <li>Move away from traffic while waiting for help</li>
+                    <li>Call roadside assistance or trusted mechanic</li>
+                    <li>If nighttime, use flashlight/reflector for visibility</li>
+                </ul>
+                
+                <h3>Common Quick Fixes</h3>
+                <ul>
+                    <li><strong>Dead battery:</strong> Push-start (if possible) or call for jump</li>
+                    <li><strong>Flat tire:</strong> Use emergency plug kit, inflate, ride slowly to shop</li>
+                    <li><strong>Chain off:</strong> Re-attach (if not damaged), check tension</li>
+                    <li><strong>Overheating:</strong> Stop immediately, let cool 15-20 min, check coolant</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🎒</span>Emergency Kit Checklist</h2>
+                <p>Keep these in your bike at all times:</p>
+                <ul class="checklist">
+                    <li>First aid kit (bandages, antiseptic, pain relievers)</li>
+                    <li>Emergency contact card</li>
+                    <li>Basic tools (wrench set, screwdrivers, pliers)</li>
+                    <li>Tire repair kit and pump</li>
+                    <li>Duct tape and zip ties</li>
+                    <li>Flashlight with extra batteries</li>
+                    <li>Reflective triangle or vest</li>
+                    <li>Phone power bank</li>
+                    <li>Rain poncho</li>
+                    <li>Small amount of cash</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">🏥</span>Basic First Aid</h2>
+                <div class="warning-box">
+                    <p>⚠️ This is basic guidance only. Always seek professional medical help for serious injuries.</p>
+                </div>
+                
+                <h3>For Road Rash/Abrasions:</h3>
+                <ul>
+                    <li>Clean wound with clean water immediately</li>
+                    <li>Apply antiseptic (betadine, alcohol)</li>
+                    <li>Cover with sterile bandage</li>
+                    <li>Change dressing daily</li>
+                    <li>Watch for signs of infection (redness, pus, fever)</li>
+                </ul>
+
+                <h3>For Bleeding:</h3>
+                <ul>
+                    <li>Apply direct pressure with clean cloth</li>
+                    <li>Elevate injured area above heart</li>
+                    <li>Don't remove cloth if blood soaks through, add more on top</li>
+                    <li>Seek medical help if bleeding doesn't stop in 10 minutes</li>
+                </ul>
+
+                <h3>For Fractures/Broken Bones:</h3>
+                <ul>
+                    <li>DO NOT move the injured person unless in danger</li>
+                    <li>Immobilize the injured area</li>
+                    <li>Call 911 immediately</li>
+                    <li>Cover open wounds with clean cloth</li>
+                    <li>Watch for shock (pale, cold, rapid breathing)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2><span class="icon">💡</span>Insurance Tips</h2>
+                <h3>Types of Motorcycle Insurance in PH:</h3>
+                <ul>
+                    <li><strong>CTPL (Required by law):</strong> ₱400-800/year, covers third party injury/death</li>
+                    <li><strong>Comprehensive:</strong> ₱3,000-8,000/year, covers theft, accident damage, third party</li>
+                    <li><strong>Own Damage:</strong> ₱1,500-4,000/year, covers your bike only</li>
+                </ul>
+
+                <h3>Filing Insurance Claims:</h3>
+                <ol>
+                    <li>Notify insurer within 24 hours of incident</li>
+                    <li>Submit police report</li>
+                    <li>Provide photos of damages</li>
+                    <li>Fill out claim forms completely</li>
+                    <li>Keep all receipts for repairs</li>
+                </ol>
+
+                <div class="info-box">
+                    <p>💡 Tip: Take photos of your bike from all angles every 6 months as documentation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-nav">
+        <button class="footer-btn active" data-section="basics">
+            <span class="icon">📋</span>
+            <span>Basics</span>
+        </button>
+        <button class="footer-btn" data-section="gear">
+            <span class="icon">🪖</span>
+            <span>Gear</span>
+        </button>
+        <button class="footer-btn" data-section="riding">
+            <span class="icon">🛣️</span>
+            <span>Riding</span>
+        </button>
+        <button class="footer-btn" data-section="weather">
+            <span class="icon">🌧️</span>
+            <span>Weather</span>
+        </button>
+        <button class="footer-btn" data-section="laws">
+            <span class="icon">📜</span>
+            <span>Laws</span>
+        </button>
+        <button class="footer-btn" data-section="emergency">
+            <span class="icon">🚨</span>
+            <span>SOS</span>
+        </button>
+    </div>
+
+    <script>
+        // Navigation functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Update nav tabs
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.getAttribute('data-section') === sectionId) {
+                    tab.classList.add('active');
+                }
+            });
+
+            // Update footer buttons
+            const footerBtns = document.querySelectorAll('.footer-btn');
+            footerBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-section') === sectionId) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add click event listeners to nav tabs
+        document.addEventListener('DOMContentLoaded', function() {
+            const navTabs = document.querySelectorAll('.nav-tab');
+            navTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    showSection(sectionId);
+                });
+            });
+
+            // Add click event listeners to footer buttons
+            const footerBtns = document.querySelectorAll('.footer-btn');
+            footerBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    showSection(sectionId);
+                });
+            });
+        });
+    </script>
